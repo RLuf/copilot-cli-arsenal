@@ -3395,6 +3395,7 @@ async function executeE2BSandbox(options, targetDir) {
 
 module.exports = { 
   createCopilotConfig: createClaudeConfig,
-  createClaudeConfig,  // Keep for backward compatibility
+  // @deprecated Use createCopilotConfig instead. Will be removed in v2.0.0
+  createClaudeConfig,
   showMainMenu 
 };
