@@ -1,6 +1,6 @@
-# Contributing to Claude Code Templates
+# Contributing to Copilot CLI Arsenal
 
-We welcome contributions! Help us make Claude Code even better for everyone.
+We welcome contributions! Help us make Copilot CLI Arsenal even better for everyone.
 
 **📋 Before contributing, please read our [Code of Conduct](CODE_OF_CONDUCT.md) to ensure a respectful and inclusive environment for all community members.**
 
@@ -23,44 +23,45 @@ Agents are AI specialists for specific domains (security, performance, framework
 
 2. **Agent File Structure**
    ```markdown
-   # Agent Name
+   ---
+   name: agent-name
+   description: Brief description of the agent
+   tools: Read, Write, Edit, Bash
+   model: gpt-4
+   ---
    
-   Agent description and purpose.
+   You are a [role] specializing in [domain].
    
-   ## Expertise
-   - Specific domain knowledge
-   - Key capabilities
-   - Use cases
+   ## Focus Areas
+   - Key capability 1
+   - Key capability 2
    
-   ## Instructions
-   Detailed instructions for Claude on how to act as this agent.
+   ## Approach
+   1. Step 1
+   2. Step 2
    
-   ## Examples
-   Practical examples of agent usage.
+   ## Output
+   - Expected output format
    ```
 
 3. **Available Categories**
    - `development-team/` - Full-stack developers, architects
-   - `domain-experts/` - Security, performance, accessibility specialists  
-   - `creative-team/` - Content creators, designers
-   - `business-team/` - Product managers, analysts
-   - `development-tools/` - Tool specialists, DevOps experts
+   - `security/` - Security auditing, vulnerability scanning
+   - `devops-infrastructure/` - DevOps, cloud, deployment
+   - `data-ai/` - Data science, ML, AI specialists
+   - `development-tools/` - Tool specialists, code reviewers
 
 4. **Creating New Categories**
    If your agent doesn't fit existing categories, create a new one:
    ```bash
-   # Create new category folder
    cd cli-tool/components/agents/
    mkdir your-new-category
-   
-   # Add your agent file to the new category
-   cd your-new-category/
-   touch your-agent-name.md
+   touch your-new-category/your-agent-name.md
    ```
 
 ### ⚡ Adding Commands
 
-Commands are custom slash commands that extend Claude Code functionality.
+Commands are custom slash commands that extend GitHub Copilot functionality.
 
 1. **Create Command File**
    ```bash
@@ -70,9 +71,10 @@ Commands are custom slash commands that extend Claude Code functionality.
 
 2. **Command File Structure**
    ```markdown
-   # /command-name
-   
-   Brief command description.
+   ---
+   name: command-name
+   description: What this command does
+   ---
    
    ## Purpose
    What this command accomplishes.
@@ -85,27 +87,14 @@ Commands are custom slash commands that extend Claude Code functionality.
    ```
 
 3. **Command Categories**
-   - `code-generation/` - Generate code, tests, documentation
-   - `analysis/` - Code analysis, optimization, debugging
-   - `project-management/` - File operations, project structure
    - `testing/` - Test generation, validation, coverage
    - `deployment/` - Build, deploy, CI/CD operations
-
-4. **Creating New Categories**
-   If your command doesn't fit existing categories, create a new one:
-   ```bash
-   # Create new category folder
-   cd cli-tool/components/commands/
-   mkdir your-new-category
-   
-   # Add your command file to the new category
-   cd your-new-category/
-   touch your-command-name.md
-   ```
+   - `security/` - Security scanning, auditing
+   - `performance/` - Optimization, profiling
 
 ### 🔌 Adding MCPs (Model Context Protocol)
 
-MCPs provide external service integrations for Claude Code.
+MCPs provide external service integrations.
 
 1. **Create MCP File**
    ```bash
@@ -121,75 +110,16 @@ MCPs provide external service integrations for Claude Code.
          "command": "npx",
          "args": ["-y", "@your-org/mcp-server"],
          "env": {
-           "API_KEY": "<YOUR_API_KEY>",
-           "BASE_URL": "https://api.service.com"
+           "API_KEY": "<YOUR_API_KEY>"
          }
        }
      }
    }
    ```
 
-3. **MCP Categories**
-   - `audio/` - Audio processing, text-to-speech, transcription services
-   - `integration/` - GitHub, GitLab, Jira
-   - `database/` - PostgreSQL, MySQL, MongoDB
-   - `cloud/` - AWS, Azure, GCP services
-   - `devtools/` - Build tools, testing frameworks
-   - `ai-services/` - OpenAI, Anthropic, other AI APIs
-
-4. **Creating New Categories**
-   If your MCP doesn't fit existing categories, create a new one:
-   ```bash
-   # Create new category folder
-   cd cli-tool/components/mcps/
-   mkdir your-new-category
-   
-   # Add your MCP file to the new category
-   cd your-new-category/
-   touch your-service-mcp.json
-   ```
-
-### ⚙️ Adding Settings
-
-Settings configure Claude Code behavior and performance.
-
-1. **Create Settings File**
-   ```bash
-   cd cli-tool/components/settings/[category]/
-   touch your-setting-name.json
-   ```
-
-2. **Settings File Structure**
-   ```json
-   {
-     "setting-category": {
-       "parameter": "value",
-       "description": "What this setting controls"
-     }
-   }
-   ```
-
-3. **Settings Categories**
-   - `performance/` - Memory, timeout, cache settings
-   - `ui/` - Interface customization, themes
-   - `mcp/` - MCP server configurations
-   - `security/` - Access control, permissions
-
-4. **Creating New Categories**
-   If your setting doesn't fit existing categories, create a new one:
-   ```bash
-   # Create new category folder
-   cd cli-tool/components/settings/
-   mkdir your-new-category
-   
-   # Add your setting file to the new category
-   cd your-new-category/
-   touch your-setting-name.json
-   ```
-
 ### 🪝 Adding Hooks
 
-Hooks provide automation triggers for different development events.
+Hooks provide automation triggers for development events.
 
 1. **Create Hook File**
    ```bash
@@ -201,93 +131,28 @@ Hooks provide automation triggers for different development events.
    ```json
    {
      "hooks": {
-       "hook-name": {
-         "event": "trigger-event",
-         "command": "action-to-perform",
-         "description": "What this hook does"
-       }
+       "PreToolCall": [
+         {
+           "matcher": "Edit(*)",
+           "hooks": [{ "type": "command", "command": "backup" }]
+         }
+       ]
      }
    }
    ```
 
-3. **Hook Categories**
-   - `git/` - Pre-commit, post-commit, pre-push
-   - `development/` - File changes, build events
-   - `testing/` - Test execution, coverage checks
+## 🛠️ Development Setup
 
-4. **Creating New Categories**
-   If your hook doesn't fit existing categories, create a new one:
-   ```bash
-   # Create new category folder
-   cd cli-tool/components/hooks/
-   mkdir your-new-category
-   
-   # Add your hook file to the new category
-   cd your-new-category/
-   touch your-hook-name.json
-   ```
-
-## 📦 Contributing Templates
-
-Templates are complete project configurations that include CLAUDE.md, .claude/* files, and .mcp.json.
-
-### Creating New Templates
-
-1. **Create Template Directory**
-   ```bash
-   cd cli-tool/templates/
-   mkdir your-template-name
-   cd your-template-name
-   ```
-
-2. **Template Structure**
-   ```
-   your-template-name/
-   ├── CLAUDE.md                    # Main configuration
-   ├── .claude/
-   │   ├── settings.json           # Automation hooks
-   │   └── commands/               # Template-specific commands
-   ├── .mcp.json                   # MCP server configuration
-   └── README.md                   # Template documentation
-   ```
-
-3. **CLAUDE.md Guidelines**
-   - Include project-specific configuration
-   - Add development commands and workflows
-   - Document best practices and conventions
-   - Include security guidelines
-   - Provide testing standards
-
-4. **Template Categories**
-   - Framework-specific (React, Vue, Angular, etc.)
-   - Language-specific (Python, TypeScript, Go, etc.)
-   - Domain-specific (API development, machine learning, etc.)
-   - Industry-specific (e-commerce, fintech, etc.)
-
-### Template Quality Standards
-
-- **Comprehensive Configuration** - Include all necessary Claude Code setup
-- **Clear Documentation** - Well-documented CLAUDE.md with examples
-- **Practical Commands** - Useful slash commands for the domain
-- **Proper MCPs** - Relevant external integrations
-- **Testing** - Test template with real projects
-
-## 🛠️ Contributing to Additional Tools
-
-For advanced contributors who want to improve the CLI tools like analytics, health check, and chat monitoring.
-
-### 🚀 Development Setup
-
-#### Prerequisites
-- Node.js 14+ (for the installer)
+### Prerequisites
+- Node.js 14+
 - npm or yarn
 - Git
 
-#### Project Setup
+### Project Setup
 ```bash
 # Clone the repository
-git clone https://github.com/davila7/claude-code-templates.git
-cd claude-code-templates
+git clone https://github.com/RLuf/copilot-cli-arsenal.git
+cd copilot-cli-arsenal
 
 # Navigate to the CLI tool directory
 cd cli-tool
@@ -302,140 +167,27 @@ npm link
 npm test
 ```
 
-### 📊 Analytics Dashboard Development
-
-The analytics dashboard provides real-time monitoring of Claude Code sessions.
-
-#### Development Workflow
-```bash
-# Start analytics dashboard
-npm run analytics:start
-
-# Clear cache during development
-curl -X POST http://localhost:3333/api/cache/clear -H "Content-Type: application/json" -d '{"type":"all"}'
-
-# Refresh data
-curl http://localhost:3333/api/refresh
-
-# Restart server completely
-pkill -f analytics && sleep 3 && npm run analytics:start
-```
-
-#### Architecture
-```
-src/analytics/
-├── core/                     # Business logic
-│   ├── StateCalculator.js   # Conversation state detection
-│   ├── ProcessDetector.js   # Running process detection
-│   ├── ConversationAnalyzer.js # Message parsing
-│   └── FileWatcher.js       # Real-time file monitoring
-├── data/                    # Data management
-│   └── DataCache.js        # Multi-level caching
-├── notifications/           # Real-time communication
-│   ├── WebSocketServer.js  # Server-side WebSocket
-│   └── NotificationManager.js # Event-driven notifications
-└── utils/                   # Utilities
-    └── PerformanceMonitor.js # System health monitoring
-```
-
-#### Common Development Issues
-
-**Problem:** Changes don't appear in dashboard
-```bash
-# Solution: Clear cache and refresh
-curl -X POST http://localhost:3333/api/cache/clear -H "Content-Type: application/json" -d '{"type":"conversations"}'
-curl http://localhost:3333/api/refresh
-```
-
-**Problem:** WebSocket not updating
-```bash
-# Solution: Hard refresh browser (Ctrl+F5 or Cmd+Shift+R)
-```
-
-### 💬 Chat Monitor Development
-
-Mobile-optimized interface for viewing Claude conversations in real-time.
-
-#### Architecture
-```
-src/chats/
-├── components/              # UI components
-├── services/               # API communication
-├── websocket/              # Real-time updates
-└── styles/                 # Mobile-first CSS
-```
-
-#### Development Commands
-```bash
-# Start chat monitor
-npm run chats:start
-
-# Start with tunnel (requires cloudflared)
-npm run chats:start -- --tunnel
-
-# Test mobile interface
-npm run chats:test
-```
-
-### 🔍 Health Check Development
-
-Comprehensive diagnostics tool for Claude Code installations.
-
-#### Health Check Categories
-- **Installation Validation** - Claude Code setup verification
-- **Configuration Check** - Settings and file validation
-- **Performance Analysis** - Memory, disk, network diagnostics
-- **Security Audit** - Permission and access checks
-
-#### Development
-```bash
-# Run health check
-npm run health-check
-
-# Add new health check
-# 1. Create check in src/health-checks/
-# 2. Add to health check registry
-# 3. Test with various scenarios
-```
-
 ## 🧪 Testing
 
 ### Component Testing
 ```bash
 # Test component installation
-npx claude-code-templates@latest --agent your-agent --dry-run
-npx claude-code-templates@latest --command your-command --dry-run
-npx claude-code-templates@latest --mcp your-mcp --dry-run
+npx copilot-cli-arsenal@latest --agent your-agent --dry-run
+npx copilot-cli-arsenal@latest --command your-command --dry-run
 ```
 
 ### Template Testing
 ```bash
 # Test template installation
-npx claude-code-templates@latest --template your-template --dry-run
-
-# Test with specific scenarios
-npm start -- --language python --framework django --dry-run
-npm start -- --language javascript --framework react --dry-run
-```
-
-### Tool Testing
-```bash
-# Test analytics
-npm run analytics:test
-
-# Test chat monitor
-npm run chats:test
-
-# Test health check
-npm run health-check:test
+npx copilot-cli-arsenal@latest --template your-template --dry-run
 ```
 
 ## 🤝 Contribution Process
 
 ### 1. Fork and Clone
 ```bash
-git clone https://github.com/your-username/claude-code-templates.git
-cd claude-code-templates
+git clone https://github.com/your-username/copilot-cli-arsenal.git
+cd copilot-cli-arsenal
 ```
 
 ### 2. Create Feature Branch
@@ -463,44 +215,20 @@ npm start -- --dry-run
 
 ## 🎯 What We're Looking For
 
-### High Priority Components
+### High Priority
 - **Security Agents** - Security auditing, vulnerability scanning
-- **Performance Commands** - Optimization, profiling, monitoring
+- **Performance Commands** - Optimization, profiling
 - **Cloud MCPs** - AWS, Azure, GCP integrations
 - **Framework Agents** - React, Vue, Angular, Next.js specialists
-
-### High Priority Templates  
-- **Modern Frameworks** - Svelte, SvelteKit, Astro, Qwik
-- **Backend Frameworks** - NestJS, Fastify, Hono, tRPC
-- **Full-Stack** - T3 Stack, create-remix-app, SvelteKit
-- **Mobile** - React Native, Expo, Flutter
-
-### Medium Priority Tools
-- **Analytics Enhancements** - Better visualizations, export options
-- **Chat Monitor Features** - Search, filtering, conversation history
-- **Health Check Improvements** - More diagnostic categories, fix suggestions
 
 ## 📞 Getting Help
 
 ### Community Support
-- **GitHub Issues** - [Report bugs or request features](https://github.com/davila7/claude-code-templates/issues)
-- **GitHub Discussions** - [Join community discussions](https://github.com/davila7/claude-code-templates/discussions)
-- **Documentation** - [Complete guides at docs.aitmpl.com](https://docs.aitmpl.com/)
-
-### Quick Start Guides
-- **Browse Components** - [aitmpl.com](https://aitmpl.com) to see existing components
-- **Component Examples** - Check existing components for structure reference
-- **Template Examples** - Review successful templates for best practices
+- **GitHub Issues** - [Report bugs or request features](https://github.com/RLuf/copilot-cli-arsenal/issues)
+- **GitHub Discussions** - [Join community discussions](https://github.com/RLuf/copilot-cli-arsenal/discussions)
 
 ## 📄 License
 
 By contributing to this project, you agree that your contributions will be licensed under the MIT License.
 
-## 🙏 Recognition
-
-All contributors are recognized in our:
-- **GitHub Contributors** page
-- **Release Notes** for significant contributions  
-- **Community Discussions** for helpful contributions
-
-Thank you for helping make Claude Code Templates better for everyone! 🚀
+Thank you for helping make Copilot CLI Arsenal better for everyone! 🚀

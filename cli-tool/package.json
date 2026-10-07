@@ -1,20 +1,16 @@
 {
-  "name": "claude-code-templates",
-  "version": "1.28.3",
-  "description": "CLI tool to setup Claude Code configurations with framework-specific commands, automation hooks and MCP Servers for your projects",
+  "name": "copilot-cli-arsenal",
+  "version": "1.0.0",
+  "description": "CLI tool to setup GitHub Copilot CLI agents and automation tools for your projects",
   "main": "src/index.js",
   "bin": {
-    "create-claude-config": "bin/create-claude-config.js",
-    "claude-code-templates": "bin/create-claude-config.js",
-    "claude-code-template": "bin/create-claude-config.js",
-    "claude-init": "bin/create-claude-config.js",
-    "cctemplates": "bin/create-claude-config.js",
-    "cct": "bin/create-claude-config.js",
-    "claude-setup": "bin/create-claude-config.js",
-    "claude-config": "bin/create-claude-config.js"
+    "copilot-cli-arsenal": "bin/create-copilot-config.js",
+    "cca": "bin/create-copilot-config.js",
+    "copilot-setup": "bin/create-copilot-config.js",
+    "copilot-config": "bin/create-copilot-config.js"
   },
   "scripts": {
-    "start": "node bin/create-claude-config.js",
+    "start": "node bin/create-copilot-config.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -29,8 +25,7 @@
     "test:node": "make test-node",
     "test:all": "npm run test:coverage && make test",
     "dev:link": "npm link",
-    "dev:unlink": "npm unlink -g claude-code-templates",
-    "pretest:commands": "npm run dev:link",
+    "dev:unlink": "npm unlink -g copilot-cli-arsenal",
     "analytics:start": "node src/analytics.js",
     "analytics:test": "npm run test:analytics",
     "security-audit": "node src/security-audit.js",
@@ -39,15 +34,12 @@
     "security-audit:json": "node src/security-audit.js --json --output=security-report.json"
   },
   "keywords": [
-    "claude",
-    "claude-code",
-    "ai",
-    "configuration",
-    "template",
-    "setup",
+    "github-copilot",
+    "copilot-cli",
+    "ai-agents",
+    "automation",
     "cli",
     "hooks",
-    "automation",
     "javascript",
     "typescript",
     "react",
@@ -61,7 +53,7 @@
     "rust",
     "go"
   ],
-  "author": "Claude Code Templates",
+  "author": "Roger Luft (RLuf)",
   "license": "MIT",
   "dependencies": {
     "boxen": "^5.1.2",
@@ -83,12 +75,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davila7/claude-code-templates.git"
+    "url": "git+https://github.com/RLuf/copilot-cli-arsenal.git"
   },
   "bugs": {
-    "url": "https://github.com/davila7/claude-code-templates/issues"
+    "url": "https://github.com/RLuf/copilot-cli-arsenal/issues"
   },
-  "homepage": "https://github.com/davila7/claude-code-templates#readme",
+  "homepage": "https://github.com/RLuf/copilot-cli-arsenal#readme",
   "files": [
     "bin/",
     "src/",
