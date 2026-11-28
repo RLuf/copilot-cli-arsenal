@@ -1,7 +1,7 @@
 ---
 name: social-media-clip-creator
 description: Social media video clip optimization specialist. Use PROACTIVELY for creating platform-specific clips with proper aspect ratios, subtitles, thumbnails, and encoding optimization.
-model: opus
+model: gpt-4
 tools: Bash, Read, Write
 ---
 

@@ -67,7 +67,7 @@ async function showMainMenu() {
     message: 'What would you like to do?',
     choices: [
       {
-        name: '📊 Analytics Dashboard - Monitor your Claude Code usage and sessions',
+        name: '📊 Analytics Dashboard - Monitor your Copilot CLI usage and sessions',
         value: 'analytics',
         short: 'Analytics Dashboard'
       },
@@ -77,17 +77,17 @@ async function showMainMenu() {
         short: 'Chats Mobile'
       },
       {
-        name: '🤖 Agents Dashboard - View and analyze Claude conversations with agent tools',
+        name: '🤖 Agents Dashboard - View and analyze Copilot conversations with agent tools',
         value: 'agents',
         short: 'Agents Dashboard'
       },
       {
-        name: '⚙️ Project Setup - Configure Claude Code for your project',
+        name: '⚙️ Project Setup - Configure Copilot CLI Arsenal for your project',
         value: 'setup',
         short: 'Project Setup'
       },
       {
-        name: '🔍 Health Check - Verify your Claude Code setup and configuration',
+        name: '🔍 Health Check - Verify your Copilot CLI setup and configuration',
         value: 'health',
         short: 'Health Check'
       }
@@ -96,21 +96,21 @@ async function showMainMenu() {
   }]);
   
   if (initialChoice.action === 'analytics') {
-    console.log(chalk.blue('📊 Launching Claude Code Analytics Dashboard...'));
+    console.log(chalk.blue('📊 Launching Copilot CLI Analytics Dashboard...'));
     trackingService.trackAnalyticsDashboard({ page: 'dashboard', source: 'interactive_menu' });
     await runAnalytics({});
     return;
   }
   
   if (initialChoice.action === 'chats') {
-    console.log(chalk.blue('💬 Launching Claude Code Mobile Chats...'));
+    console.log(chalk.blue('💬 Launching Copilot CLI Mobile Chats...'));
     trackingService.trackAnalyticsDashboard({ page: 'chats-mobile', source: 'interactive_menu' });
     await startChatsMobile({});
     return;
   }
   
   if (initialChoice.action === 'agents') {
-    console.log(chalk.blue('🤖 Launching Claude Code Agents Dashboard...'));
+    console.log(chalk.blue('🤖 Launching Copilot CLI Agents Dashboard...'));
     trackingService.trackAnalyticsDashboard({ page: 'agents', source: 'interactive_menu' });
     await runAnalytics({ openTo: 'agents' });
     return;
@@ -138,7 +138,7 @@ async function showMainMenu() {
   }
   
   // Continue with setup if user chose 'setup'
-  console.log(chalk.blue('⚙️  Setting up Claude Code configuration...'));
+  console.log(chalk.blue('⚙️  Setting up Copilot CLI configuration...'));
   return await createClaudeConfig({ setupFromMenu: true });
 }
 
@@ -3393,4 +3393,9 @@ async function executeE2BSandbox(options, targetDir) {
   }
 }
 
-module.exports = { createClaudeConfig, showMainMenu };
+module.exports = { 
+  createCopilotConfig: createClaudeConfig,
+  // @deprecated Use createCopilotConfig instead. Will be removed in v2.0.0
+  createClaudeConfig,
+  showMainMenu 
+};

@@ -1,161 +1,25 @@
-# CLAUDE.md
+# CLAUDE.md - DEPRECATED
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+> **Note**: This file has been deprecated. Please refer to [COPILOT.md](COPILOT.md) for the updated development guide.
 
-## Project Overview
+This repository has been migrated from Claude Code Templates to **Copilot CLI Arsenal** - a collection of specialized AI agents for GitHub Copilot CLI.
 
-This is a Node.js CLI tool for setting up Claude Code configurations and providing real-time analytics. The project uses modern JavaScript/Node.js development practices and includes a comprehensive analytics dashboard with modular architecture.
+## Quick Reference
 
-## Development Commands
+- **New Documentation**: [COPILOT.md](COPILOT.md)
+- **Repository**: [github.com/RLuf/copilot-cli-arsenal](https://github.com/RLuf/copilot-cli-arsenal)
+- **CLI Command**: `cca` or `copilot-cli-arsenal`
 
-### Package Management
-- `npm install` - Install all dependencies
-- `npm install --save <package>` - Install a production dependency
-- `npm install --save-dev <package>` - Install a development dependency
-- `npm update` - Update all dependencies
-- `npm audit` - Check for security vulnerabilities
-- `npm audit fix` - Fix security vulnerabilities
+## Migration Summary
 
-### Application Commands
-- `npm start` - Run the CLI tool
-- `npm run analytics:start` - Start the analytics dashboard server
-- `npm run analytics:test` - Run analytics-specific tests
-- `node src/analytics.js` - Direct analytics server startup
+| Old (Claude Code) | New (Copilot CLI) |
+|-------------------|-------------------|
+| `cct` | `cca` |
+| `claude-code-templates` | `copilot-cli-arsenal` |
+| `.claude/` | `.copilot/` |
+| `CLAUDE.md` | `COPILOT.md` |
 
-### Testing Commands
-- `npm test` - Run all tests with Jest
-- `npm run test:watch` - Run tests in watch mode
-- `npm run test:coverage` - Run tests with coverage report
-- `npm run test:unit` - Run unit tests only
-- `npm run test:integration` - Run integration tests only
-- `npm run test:e2e` - Run end-to-end tests
-- `npm run test:analytics` - Run analytics module tests
-- `npm run test:all` - Run comprehensive test suite
-
-### Code Quality Commands
-- `npm run lint` - Run ESLint (if configured)
-- `npm run format` - Format code (if configured)
-- `node --check src/analytics.js` - Check syntax
-
-### Development Tools
-- `npm run dev:link` - Link package for local development
-- `npm run dev:unlink` - Unlink package
-- `npm version patch|minor|major` - Bump version
-- `npm publish` - Publish to npm registry
-
-## Analytics Dashboard
-
-### Quick Start
-```bash
-# Start the analytics dashboard
-npm run analytics:start
-
-# Open browser to http://localhost:3333
-# The dashboard provides real-time monitoring of Claude Code sessions
-```
-
-### Key Features
-- **Real-time Session Monitoring** - Live tracking of active Claude Code conversations
-- **Conversation State Detection** - "Claude working...", "User typing...", "Awaiting input..."
-- **Performance Analytics** - System health, memory usage, and performance metrics
-- **WebSocket Integration** - Real-time updates without polling
-- **Export Capabilities** - CSV/JSON export of conversation data
-- **Browser Notifications** - Desktop alerts for state changes
-
-### Architecture
-The analytics dashboard follows a modular architecture with:
-- **Backend Modules**: StateCalculator, ProcessDetector, ConversationAnalyzer, FileWatcher, DataCache
-- **Frontend Components**: Dashboard, ConversationTable, Charts, Services
-- **Real-time Communication**: WebSocket server with notification management
-- **Performance Monitoring**: Comprehensive metrics and health monitoring
-- **Testing Framework**: Unit, integration, and performance tests
-
-## Technology Stack
-
-### Core Technologies
-- **Node.js** - Runtime environment (v14.0.0+)
-- **Express.js** - Web server framework
-- **WebSocket** - Real-time communication (ws library)
-- **Chokidar** - File system watching
-- **Jest** - Testing framework
-
-### Frontend Technologies
-- **Vanilla JavaScript** - No framework dependencies for maximum compatibility
-- **Chart.js** - Data visualization
-- **WebSocket Client** - Real-time updates
-- **CSS3** - Modern styling with responsive design
-
-### Development Tools
-- **fs-extra** - Enhanced file system operations
-- **chalk** - Terminal string styling
-- **boxen** - Terminal boxes
-- **commander** - CLI argument parsing
-- **inquirer** - Interactive command line prompts
-
-### CLI Dependencies
-- **commander** - Command-line interface framework
-- **inquirer** - Interactive command line prompts
-- **ora** - Terminal spinners
-- **boxen** - Terminal boxes for notifications
-- **open** - Cross-platform file opener
-
-### Analytics Dependencies
-- **express** - Web server framework
-- **ws** - WebSocket library for real-time communication
-- **chokidar** - File system watcher
-- **fs-extra** - Enhanced file system operations
-- **chalk** - Terminal string styling
-
-### Testing Framework
-- **Jest** - JavaScript testing framework
-- **jest-watch-typeahead** - Interactive test watching
-- Comprehensive test coverage with unit, integration, and performance tests
-
-### Code Quality Tools
-- **ESLint** - JavaScript linting (if configured)
-- **Prettier** - Code formatting (if configured)
-- **Node.js built-in** - Syntax checking with `node --check`
-
-## Project Structure Guidelines
-
-### File Organization
-```
-src/
-├── index.js             # CLI entry point
-├── analytics.js         # Analytics dashboard server
-├── analytics/           # Analytics modules
-│   ├── core/           # Core business logic
-│   │   ├── StateCalculator.js
-│   │   ├── ProcessDetector.js
-│   │   ├── ConversationAnalyzer.js
-│   │   └── FileWatcher.js
-│   ├── data/           # Data management
-│   │   └── DataCache.js
-│   ├── notifications/   # Real-time communication
-│   │   ├── WebSocketServer.js
-│   │   └── NotificationManager.js
-│   └── utils/          # Utilities
-│       └── PerformanceMonitor.js
-├── analytics-web/       # Frontend components
-│   ├── index.html      # Main dashboard page
-│   ├── components/     # UI components
-│   ├── services/       # Frontend services
-│   └── assets/         # Static assets
-├── templates/           # Configuration templates
-└── utils/              # CLI utilities
-tests/
-├── unit/               # Unit tests
-├── integration/        # Integration tests
-├── e2e/               # End-to-end tests
-└── fixtures/          # Test data
-```
-
-### Naming Conventions
-- **Files/Modules**: Use PascalCase for classes (`StateCalculator.js`), camelCase for utilities
-- **Classes**: Use PascalCase (`StateCalculator`)
-- **Functions/Variables**: Use camelCase (`getUserData`)
-- **Constants**: Use UPPER_SNAKE_CASE (`API_BASE_URL`)
-- **Private methods**: Prefix with underscore (`_privateMethod`)
+For detailed usage and development instructions, please see [COPILOT.md](COPILOT.md).
 
 ## Node.js Guidelines
 
